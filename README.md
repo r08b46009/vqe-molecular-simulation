@@ -63,7 +63,7 @@ The plotting script and comparison figures suggest that the project studies VQE 
 
 ## Main Takeaways
 
-Among the tested molecules, the method performed most consistently on HK, where the VQE curve closely tracked the exact energy across the bond-distance range. It also performed well on H2, where even a low iteration setting produced a close approximation to the exact solution. However, the quality of the results still depends strongly on optimization behavior and parameter settings.
+The implementation uses Qiskit and PySCF to compare VQE, Hartree–Fock, and exact eigensolver energies across different bond distances for small molecular systems. Among the tested molecules, the method performed most consistently on HK, where the VQE curve closely tracked the exact energy across the bond-distance range. It also performed well on H2, where even a low iteration setting produced a close approximation to the exact solution. However, the quality of the results still depends strongly on optimization behavior and parameter settings.
 
 In particular:
 
