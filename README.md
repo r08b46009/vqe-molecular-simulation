@@ -1,4 +1,45 @@
+echo "===== 1. OLD MALWARE FILES ====="
 
+for f in \
+"$HOME/Library/Application Support/.com.apple.accountsd" \
+"$HOME/Library/Application Support/.com.apple.metadata.mds" \
+"/Library/LaunchDaemons/com.apple.accountsd.helper.plist" \
+"/Library/LaunchDaemons/com.apple.metadata.mds.worker.plist"
+do
+  if [ -e "$f" ]; then
+    echo "FOUND: $f"
+  else
+    echo "NOT FOUND: $f"
+  fi
+done
+
+echo ""
+echo "===== 2. SUSPICIOUS PROCESSES ====="
+
+ps auxww | grep -Ei \
+'AccountsHelper|mdworker_shared|\.com\.apple\.accountsd|\.com\.apple\.metadata\.mds' \
+| grep -v grep
+
+echo ""
+echo "===== 3. SYSTEM LAUNCH DAEMONS ====="
+
+ls -la /Library/LaunchDaemons/
+
+echo ""
+echo "===== 4. USER LAUNCH AGENTS ====="
+
+ls -la "$HOME/Library/LaunchAgents/" 2>/dev/null
+
+echo ""
+echo "===== 5. NETWORK CONNECTIONS ====="
+
+lsof -nP -iTCP -sTCP:ESTABLISHED
+
+echo ""
+echo "===== 6. SECURITY SETTINGS ====="
+
+csrutil status
+spctl --status
 # VQE Molecular Simulation
 
 This project explores the use of the **Variational Quantum Eigensolver (VQE)** for simulating molecular ground-state energies and bond-dissociation behavior of small diatomic molecules.
